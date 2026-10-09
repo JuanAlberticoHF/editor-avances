@@ -1,0 +1,204 @@
+/* ==========================================================================
+RESET Y CONFIGURACIÓN BASE
+========================================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #fcfcfc;
+    color: #222222;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+CABECERA (HEADER)
+========================================================================== */
+header {
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #ffffff;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 2rem;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+.logo-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+BARRA DE MÉTRICAS Y CONTADORES
+========================================================================== */
+.stats-bar {
+    display: flex;
+    justify-content: center;
+    background-color: #f7f9fa;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.stats-container {
+    display: flex;
+    width: 100%;
+    max-width: 650px;
+    border-left: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+}
+
+.stat-item {
+    flex: 1;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+.stat-item:first-child {
+    border-right: 1px solid #e5e7eb;
+}
+
+.stat-item strong {
+    color: #111827;
+}
+
+/* ==========================================================================
+CONTENEDOR PRINCIPAL Y TARJETAS
+========================================================================== */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+}
+
+.content-card {
+    width: 100%;
+    max-width: 650px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* ==========================================================================
+TIPOGRAFÍA Y SECCIONES
+========================================================================== */
+.section-block {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+h1, h2, h3 {
+    color: #111827;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+p.description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #4b5563;
+    max-width: 480px;
+    margin: 0 auto 1.5rem auto;
+}
+
+/* ==========================================================================
+BOTONES Y ENLACES DE ACCIÓN
+========================================================================== */
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #111827;
+    background-color: #ffffff;
+    border: 1px solid #111827;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    width: 100%;
+    max-width: 260px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #111827;
+    color: #ffffff;
+}
+
+.btn-primary {
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+/* ==========================================================================
+ELEMENTOS DE PERFIL E IMÁGENES
+========================================================================== */
+.avatar-container {
+    margin: 1.5rem 0 2rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #d1d5db;
+    background-color: #f3f4f6;
+}
+
+/* ==========================================================================
+PIE DE PÁGINA (FOOTER)
+========================================================================== */
+footer {
+    border-top: 1px solid #e5e7eb;
+    padding: 1.2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #6b7280;
+    background-color: #ffffff;
+}
+
+footer a {
+    color: inherit;
+    text-decoration: underline;
+}

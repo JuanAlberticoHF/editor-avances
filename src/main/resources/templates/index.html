@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Editor Avances</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="../static/css/styles.css">
+</head>
+<body>
+
+<!-- Encabezado superior -->
+<header th:replace="~{fragmentos/layout :: header}"></header>
+
+<!-- Contadores / Indicadores -->
+<div class="stats-bar">
+    <div class="stats-container">
+        <div class="stat-item">
+            Nº Avances: <strong th:text="${cantidadAvances}">0</strong>
+        </div>
+        <div class="stat-item">
+            Nº Endpoints REST: <strong th:text="${numeroEndpoints}">0</strong>
+        </div>
+    </div>
+</div>
+
+<!-- Contenido central según el Wireframe -->
+<main>
+    <div class="content-card">
+
+        <!-- Sección: Sobre Editor Avances -->
+        <section class="section-block">
+            <h2>Sobre Editor Avances</h2>
+            <p class="description">
+                Editor de Avances Thymeleaf es una idea de proyecto de práctica que consiste en un sitio web para visualizar un listado de avances, visualizar el contenido de un Avance y un editor de Avances.
+            </p>
+            <div class="btn-group">
+                <a th:href="@{/avances/}" class="btn btn-primary">ACCEDER AVANCES</a>
+            </div>
+        </section>
+
+        <!-- Sección: API Pública Avances -->
+        <section class="section-block">
+            <h2>API Publica Avances</h2>
+            <div class="btn-group">
+                <!-- Consultar todos los avances -->
+                <a th:href="@{/api/avances/}" class="btn">Consultar todos los avances</a>
+
+                <!-- Consultar avances por ID con formulario de alerta (prompt) -->
+                <button type="button" class="btn" onclick="consultarPorId()">Consultar avances por ID</button>
+
+                <!-- Documentación Swagger -->
+                <a th:href="@{/swagger-ui/index.html}" class="btn">Documentación API</a>
+            </div>
+        </section>
+
+        <!-- Foto de perfil circular -->
+        <div class="avatar-container">
+            <img th:src="@{/images/juanalberticohf_icon.png}"
+                 src="../static/images/juanalberticohf_icon.png"
+                 alt="Foto de perfil"
+                 class="profile-img">
+        </div>
+
+    </div>
+</main>
+
+<!-- Footer -->
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+
+<!-- Lógica JavaScript -->
+<script>
+    function consultarPorId() {
+        const id = prompt("Introduce el ID del avance a consultar:");
+        if (id !== null && id.trim() !== "") {
+            // Redirige al endpoint con el ID ingresado
+            window.location.href = `/api/avances/${encodeURIComponent(id.trim())}`;
+        }
+    }
+</script>
+
+</body>
+</html>
