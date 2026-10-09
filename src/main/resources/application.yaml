@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: editor-avances
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/avances_db?createDatabaseIfNotExist=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop # Crea la estructura de la base de datos al iniciar la aplicación y la elimina al detenerla.
+
+    show-sql: true # Muestra las consultas SQL generadas por Hibernate en la consola.
+
+# Configuración SpringDoc OpenAPI
+springdoc:
+  override-with-generic-response: true
