@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista Avance - Editor Avances</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="../static/css/styles.css">
+</head>
+<body>
+
+<!-- Encabezado superior unificado -->
+<header th:replace="~{fragmentos/layout :: header}"></header>
+
+<main>
+    <div class="content-card wide-card">
+
+        <!-- Barra de navegación superior interna -->
+        <div class="detail-header-bar">
+            <div class="detail-header-left">
+                <a th:href="@{/avances/}" class="btn btn-secondary">Volver</a>
+            </div>
+
+            <div class="detail-header-center">
+                <h2 class="page-title">VISTA AVANCE</h2>
+                <span class="detail-id" th:text="${'ID: ' + avance.id}">ID: X</span>
+            </div>
+
+            <div class="detail-header-right">
+                <button type="button" class="btn btn-secondary" th:onclick="|editarAvance('${avance.id}')|">Editar</button>
+                <button type="button" class="btn btn-secondary" th:onclick="|eliminarAvance('${avance.id}')|">Eliminar</button>
+            </div>
+        </div>
+
+        <!-- Formulario/Cajas de visualización de datos -->
+        <div class="detail-form-container">
+
+            <div class="form-group">
+                <label class="form-label">Título</label>
+                <div class="form-display-box" th:text="${avance.titulo}">Contenido Título</div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Descripción</label>
+                <div class="form-display-box desc-box" th:text="${avance.descripcion}">Contenido de la descripción</div>
+            </div>
+
+            <div class="dates-row">
+                <div class="form-display-box date-box">
+                    Fecha creación: <span th:text="${avance.fechaCreacion}">XX/XX/XXXX</span>
+                </div>
+                <div class="form-display-box date-box">
+                    Fecha última modificación: <span th:text="${avance.fechaActualizacion}">XX/XX/XXXX</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</main>
+
+<!-- Pie de página unificado -->
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+
+<script>
+    function editarAvance(id) {
+        window.location.href = '/avances/' + id + '/editar';
+    }
+
+    function eliminarAvance(id) {
+        if (!confirm("¿Estás seguro de que deseas eliminar este avance?")) {
+            return;
+        }
+
+        fetch(`/avances/${id}`, {
+            method: 'DELETE'
+        }).then(response => {
+            if (response.ok) {
+                alert("Avance eliminado correctamente.");
+                window.location.href = '/avances/';
+            } else {
+                alert("Error al eliminar el avance.");
+            }
+        }).catch(error => {
+            console.error("Error al eliminar el avance:", error);
+            alert("Error al eliminar el avance.");
+        });
+    }
+</script>
+
+</body>
+</html>
