@@ -1,6 +1,11 @@
 package io.github.juanalberticohf.editor_avances.controllers;
 
+import io.github.juanalberticohf.editor_avances.exceptions.AvanceNotFoundException;
+import io.github.juanalberticohf.editor_avances.persistence.entities.Avance;
 import io.github.juanalberticohf.editor_avances.persistence.repositories.IAvanceRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,9 +24,11 @@ public class AvanceController {
     }
 
     @GetMapping("/")
-    public String listadoAvances(Model model) {
+    public String listadoAvances(Model model, @PageableDefault(size = 500) Pageable pageable) {
+        Page<Avance> avances = avanceRepository.findAll(pageable);
         // Añadir el listado de avances al modelo para que pueda ser accedido en la vista
-        model.addAttribute("listadoAvances", avanceRepository.findAll());
+        model.addAttribute("listadoAvances", avanceRepository.findAll(pageable));
+        model.addAttribute("cantidadAvances", avances.getTotalElements());
         return "listado";
     }
 
@@ -31,7 +38,13 @@ public class AvanceController {
     }
 
     @GetMapping("/{id}")
-    public String vistaAvance(@PathVariable Long id) {
+    public String vistaAvance(Model model, @PathVariable Long id) {
+        // Buscar el avance por su ID, si no se encuentra, lanzar una excepción
+        Avance avance = avanceRepository.findById(id).orElseThrow(() ->
+                new AvanceNotFoundException("Avance no encontrado con id: " + id));
+
+        model.addAttribute("avance", avance); // Información Avance
+
         return "vista_avance";
     }
 
