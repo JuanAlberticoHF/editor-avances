@@ -34,7 +34,7 @@ public class AvanceController {
 
     @GetMapping("/crear")
     public String formularioAvance() {
-        return "formulario";
+        return "formulario_crear";
     }
 
     @GetMapping("/{id}")
@@ -50,7 +50,7 @@ public class AvanceController {
 
     @GetMapping("/{id}/editar")
     public String formularioAvance(@PathVariable Long id) {
-        return "formulario";
+        return "formulario_editar";
     }
 
     @DeleteMapping("/{id}")
