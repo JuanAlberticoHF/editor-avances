@@ -8,6 +8,13 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+/**
+ * <p>Entidad que representa un avance en la aplicación.</p>
+ *
+ * @author JuanAlbeticoHF
+ * @version 1.0.0
+ * @since 0.0.1
+ */
 @Entity
 @Table(name = "Avance")
 @Getter

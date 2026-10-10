@@ -6,6 +6,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+/**
+ * <p>Manejador global de excepciones para la aplicación.</p>
+ *
+ * @author JuanAlbeticoHF
+ * @version 0.1.0
+ * @since 0.0.1
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 

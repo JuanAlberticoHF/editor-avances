@@ -5,6 +5,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * <p>Interfaz de servicio para manejar la lógica de negocio relacionada con los avances.</p>
+ *
+ * @author JuanAlbeticoHF
+ * @version 0.2.0
+ * @since 0.0.1
+ */
 @Service
 public interface AvanceService {
     /**

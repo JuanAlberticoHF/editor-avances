@@ -11,12 +11,15 @@ import java.util.List;
  * <p>Implementación del servicio {@link AvanceService}</p>
  *
  * @author JuanAlbeticoHF
- * @version 1.0.0
+ * @version 0.2.0
  * @since 0.0.1
  */
 @Service
 public class AvanceServiceImpl implements  AvanceService {
 
+    /**
+     * Repositorio para acceder a los datos de los avances.
+     */
     private final IAvanceRepository avanceRepository;
 
     public AvanceServiceImpl(IAvanceRepository avanceRepository) {
