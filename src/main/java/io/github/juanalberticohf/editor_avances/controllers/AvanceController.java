@@ -8,10 +8,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Objects;
 
 /**
  * Controlador para manejar las vistas relacionadas con los avances.
@@ -49,8 +48,22 @@ public class AvanceController {
     }
 
     @GetMapping("/crear")
-    public String formularioAvance() {
+    public String formularioAvance(Model model) {
+        // Añadir un objeto Avance vacío al modelo para que pueda ser utilizado en el formulario
+        model.addAttribute("avance", new Avance());
+
         return "formulario_crear";
+    }
+
+    @PostMapping("/crear")
+    public String crearAvance(Avance avance) {
+
+        avance.setFechaCreacion(java.time.LocalDateTime.now()); // Establecer la fecha de creación al momento actual
+        avance.setFechaActualizacion(java.time.LocalDateTime.now()); // Establecer la fecha de actualización al momento actual
+
+        Avance avanceGuardado = avanceRepository.save(avance);
+
+        return "redirect:/avances/" + avanceGuardado.getId();
     }
 
     /**
@@ -70,9 +83,49 @@ public class AvanceController {
         return "vista_avance";
     }
 
+    /**
+     * Muestra el formulario para editar un avance específico basado en su ID.
+     * @param id El ID del avance que se desea editar.
+     * @param model El modelo para pasar datos a la vista.
+     * @return vista "formulario_editar" que permite modificar los detalles del avance.
+     */
     @GetMapping("/{id}/editar")
-    public String formularioAvance(@PathVariable Long id) {
-        return "formulario_editar";
+    public String formularioAvance(@PathVariable Long id, Model model) {
+
+        Avance avance = avanceRepository.findById(id).orElse(null);
+
+        if (avance == null) {
+            return "redirect:/avances/";
+        } else {
+            model.addAttribute("avance", avance);
+            return "formulario_editar";
+        }
+    }
+
+    @PutMapping("/{id}")
+    public String editarAvance(@PathVariable Long id, Avance avanceActualizado) {
+
+        // Igualar que ambos ids existan y sean iguales
+        if (!Objects.equals(id, avanceActualizado.getId())) {
+            return "redirect:/avances/";
+        }
+
+        // Buscar el avance existente por su ID
+        Avance avanceExistente = avanceRepository.findById(id).orElse(null);
+
+        if (avanceExistente == null) {
+            return "redirect:/avances/";
+        }
+
+        // Actualizar los campos del avance existente con los valores del avance recibido
+        avanceExistente.setTitulo(avanceActualizado.getTitulo());
+        avanceExistente.setDescripcion(avanceActualizado.getDescripcion());
+        avanceExistente.setFechaActualizacion(java.time.LocalDateTime.now());
+
+        // Guardar los cambios en la base de datos
+        avanceRepository.save(avanceExistente);
+
+        return "redirect:/avances/" + id;
     }
 
     /**
