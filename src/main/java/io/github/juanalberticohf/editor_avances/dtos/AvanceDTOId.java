@@ -1,7 +1,6 @@
 package io.github.juanalberticohf.editor_avances.dtos;
 
 import io.github.juanalberticohf.editor_avances.persistence.entities.Avance;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
