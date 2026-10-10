@@ -47,6 +47,11 @@ public class AvanceController {
         return "listado";
     }
 
+    /**
+     * Muestra el formulario para crear un nuevo avance.
+     * @param model El modelo para pasar datos a la vista.
+     * @return vista "formulario_crear" que permite ingresar los detalles del nuevo avance.
+     */
     @GetMapping("/crear")
     public String formularioAvance(Model model) {
         // Añadir un objeto Avance vacío al modelo para que pueda ser utilizado en el formulario
@@ -55,6 +60,11 @@ public class AvanceController {
         return "formulario_crear";
     }
 
+    /**
+     * Metodo para crear un nuevo avance.
+     * @param avance El objeto {@link Avance} que se desea crear.
+     * @return Redirige a la vista del avance recién creado.
+     */
     @PostMapping("/crear")
     public String crearAvance(Avance avance) {
 
@@ -102,6 +112,12 @@ public class AvanceController {
         }
     }
 
+    /**
+     * Metodo para editar un avance específico basado en su ID.
+     * @param id El ID del avance que se desea editar.
+     * @param avanceActualizado El objeto {@link Avance} con los nuevos datos que se desean actualizar.
+     * @return vista "vista_avance" que muestra los detalles actualizados del avance.
+     */
     @PutMapping("/{id}")
     public String editarAvance(@PathVariable Long id, Avance avanceActualizado) {
 
