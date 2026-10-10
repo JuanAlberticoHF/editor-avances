@@ -8,14 +8,14 @@ import org.springframework.context.annotation.Configuration;
  * <p>Configuración de OpenAPI para la documentación de la API REST</p>
  *
  * @author JuanAlbeticoHF
- * @version 0.3.0
+ * @version 0.3.2
  * @since 0.0.1
  */
 @Configuration
 @OpenAPIDefinition(
         info = @Info(
                 title = "Editor Avances API",
-                version = "0.3.0",
+                version = "0.3.2",
                 description = "Documentación de la API de Editor Avances"
         )
 )
