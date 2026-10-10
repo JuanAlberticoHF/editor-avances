@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  editor-avances-db: # servicio base de datos MySQL.
+    image: mysql:8.0.46
+    ports:
+      - "3307:3306" # <<puerto Host (3307)>>:<<puerto contenedor (3306)>> (para evitar conflictos con MySQL local)
+    environment: # variables de entorno usuario administrador MySQL.
+      MYSQL_ROOT_PASSWORD: 123456
