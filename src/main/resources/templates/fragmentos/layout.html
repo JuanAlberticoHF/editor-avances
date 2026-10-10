@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título dinámico que puedes pasar como argumento -->
+    <title>Fragmentos</title>
+
+    <!-- CSS global compartido -->
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="../../static/css/styles.css">
+</head>
+<body>
+
+<!-- FRAGMENTO: HEADER -->
+<header th:fragment="header">
+    <div class="header-content">
+        <a th:href="@{/}" class="logo-link">
+            <span class="logo-title">EDITOR AVANCES</span>
+        </a>
+    </div>
+</header>
+
+<!-- FRAGMENTO: FOOTER -->
+<footer th:fragment="footer">
+    <p>Creado por JuanAlberticoHF en GitHub</p>
+</footer>
+
+</body>
+</html>

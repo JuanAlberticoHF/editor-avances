@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Avance - Editor Avances</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="../static/css/styles.css">
+</head>
+<body>
+
+<!-- Encabezado superior unificado -->
+<header th:replace="~{fragmentos/layout :: header}"></header>
+
+<main>
+    <div class="content-card form-card">
+
+        <!-- Título y Subtítulo según Wireframe -->
+        <div class="form-header-title">
+            <h2 class="page-title">FORMULARIO AVANCES</h2>
+            <p class="form-subtitle">Modo: Creación</p>
+        </div>
+
+        <!-- Formulario -->
+        <form th:action="@{/avances/crear}" th:object="${avance}" method="POST" class="form-body">
+
+            <!-- Campo: Título -->
+            <div class="form-group">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" id="titulo" th:field="*{titulo}" class="form-control-input" required />
+            </div>
+
+            <!-- Campo: Descripción -->
+            <div class="form-group">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea id="descripcion" th:field="*{descripcion}" class="form-control-input desc-textarea" rows="5" required></textarea>
+            </div>
+
+            <!-- Botones: Cancelar y Crear -->
+            <div class="form-actions-bar">
+                <a th:href="@{/avances/}" class="btn btn-form-action">Cancelar</a>
+                <button type="submit" class="btn btn-form-action">Crear</button>
+            </div>
+
+        </form>
+
+    </div>
+</main>
+
+<!-- Pie de página unificado -->
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+
+</body>
+</html>

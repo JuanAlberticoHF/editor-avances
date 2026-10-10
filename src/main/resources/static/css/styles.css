@@ -1,0 +1,530 @@
+/* ==========================================================================
+RESET Y CONFIGURACIÓN BASE
+========================================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #fcfcfc;
+    color: #222222;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+CABECERA (HEADER)
+========================================================================== */
+header {
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #ffffff;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 2rem;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+.logo-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+BARRA DE MÉTRICAS Y CONTADORES
+========================================================================== */
+.stats-bar {
+    display: flex;
+    justify-content: center;
+    background-color: #f7f9fa;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.stats-container {
+    display: flex;
+    width: 100%;
+    max-width: 650px;
+    border-left: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+}
+
+.stat-item {
+    flex: 1;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+.stat-item:first-child {
+    border-right: 1px solid #e5e7eb;
+}
+
+.stat-item strong {
+    color: #111827;
+}
+
+/* ==========================================================================
+CONTENEDOR PRINCIPAL Y TARJETAS
+========================================================================== */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+}
+
+.content-card {
+    width: 100%;
+    max-width: 650px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Variante de tarjeta ancha para Listado y Vista Detalle */
+.wide-card {
+    max-width: 850px;
+    align-items: stretch;
+    text-align: left;
+}
+
+/* ==========================================================================
+TIPOGRAFÍA Y SECCIONES
+========================================================================== */
+.section-block {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+h1, h2, h3 {
+    color: #111827;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+p.description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #4b5563;
+    max-width: 480px;
+    margin: 0 auto 1.5rem auto;
+}
+
+/* ==========================================================================
+BOTONES Y ENLACES DE ACCIÓN
+========================================================================== */
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #111827;
+    background-color: #ffffff;
+    border: 1px solid #111827;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    width: 100%;
+    max-width: 260px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #111827;
+    color: #ffffff;
+}
+
+.btn-primary {
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.btn-secondary {
+    width: auto;
+    padding: 0.45rem 1.25rem;
+}
+
+.btn-create {
+    width: auto;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+VISTA LISTADO: BARRA DE ORDENACIÓN, CONTADOR Y TARJETAS
+========================================================================== */
+.toolbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.sort-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #111827;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.sort-label {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.85rem;
+    background-color: #f3f4f6;
+    border-right: 1px solid #111827;
+    color: #374151;
+}
+
+.sort-btn {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: #111827;
+    border-right: 1px solid #111827;
+    transition: background-color 0.15s ease;
+}
+
+.sort-btn:last-child {
+    border-right: none;
+}
+
+.sort-btn:hover {
+    background-color: #f3f4f6;
+}
+
+.results-count {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+}
+
+.advances-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+/* Tarjeta de cada avance (al hacer clic redirige a ver el avance) */
+.advance-item {
+    border: 1px solid #111827;
+    border-radius: 20px;
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.advance-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.advance-info {
+    flex: 1;
+    margin-right: 1.5rem;
+}
+
+.advance-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.advance-desc {
+    font-size: 0.88rem;
+    color: #4b5563;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.advance-date {
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
+/* Botones circulares ED y EL */
+.advance-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.action-circle-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #111827;
+    background-color: #ffffff;
+    color: #111827;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0; /* Asegura centrado perfecto */
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+}
+
+/* Ajusta el tamaño del icono dentro del círculo */
+.action-circle-btn .material-symbols-outlined {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.action-circle-btn:hover {
+    background-color: #111827;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+VISTA DETALLE (VISTA AVANCE)
+========================================================================== */
+.detail-header-bar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.detail-header-left {
+    justify-self: start;
+}
+
+.detail-header-center {
+    text-align: center;
+}
+
+.detail-header-center .page-title {
+    margin-bottom: 0.2rem;
+}
+
+.detail-id {
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.detail-header-right {
+    justify-self: end;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.detail-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.form-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.form-display-box {
+    border: 1px solid #111827;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.9rem;
+    color: #374151;
+    background-color: #ffffff;
+    border-radius: 2px;
+}
+
+.form-group .form-display-box:not(.desc-box) {
+    max-width: 300px;
+}
+
+.desc-box {
+    min-height: 110px;
+    white-space: pre-wrap;
+}
+
+.dates-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.date-box {
+    flex: 1;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+ELEMENTOS DE PERFIL E IMÁGENES
+========================================================================== */
+.avatar-container {
+    margin: 1.5rem 0 2rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #d1d5db;
+    background-color: #f3f4f6;
+}
+
+/* ==========================================================================
+PIE DE PÁGINA (FOOTER)
+========================================================================== */
+footer {
+    border-top: 1px solid #e5e7eb;
+    padding: 1.2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #6b7280;
+    background-color: #ffffff;
+}
+
+footer a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+FORMULARIOS (CREAR Y EDITAR - SEGÚN WIREFRAMES)
+========================================================================== */
+.form-card {
+    max-width: 700px;
+    align-items: stretch;
+    text-align: left;
+}
+
+.form-header-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-header-title .page-title {
+    margin-bottom: 0.15rem;
+}
+
+.form-subtitle {
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+.form-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.form-control-input {
+    width: 100%;
+    border: 1px solid #111827;
+    border-radius: 8px;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.9rem;
+    color: #111827;
+    background-color: #ffffff;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.form-control-input:focus {
+    border-color: #000000;
+}
+
+.desc-textarea {
+    border-radius: 12px;
+    resize: vertical;
+}
+
+.form-readonly-field {
+    border: 1px solid #111827;
+    background-color: #f3f4f6;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.9rem;
+    color: #111827;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-actions-bar {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.btn-form-action {
+    border-radius: 12px;
+    width: 100%;
+    max-width: 180px;
+}

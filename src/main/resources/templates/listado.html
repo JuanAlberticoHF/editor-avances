@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado - Editor Avances</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="../static/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=delete,edit" />
+</head>
+<body>
+
+<!-- Encabezado superior unificado -->
+<header th:replace="~{fragmentos/layout :: header}"></header>
+
+<main>
+    <div class="content-card wide-card">
+
+        <!-- Título principal -->
+        <h2 class="page-title">LISTADO DE AVANCES</h2>
+
+        <!-- Barra de herramientas: Filtros de ordenación y Crear Avance -->
+        <div class="toolbar-container">
+            <div class="sort-bar">
+                <span class="sort-label">Ordenar por</span>
+                <a th:href="@{/avances/(sort='titulo')}" class="sort-btn">Título</a>
+                <a th:href="@{/avances/(sort='fechaCreacion,asc')}" class="sort-btn">Fecha Asc</a>
+                <a th:href="@{/avances/(sort='fechaCreacion,desc')}" class="sort-btn">Fecha Desc</a>
+                <a th:href="@{/avances/(sort='fechaActualizacion,desc')}" class="sort-btn">Última Edición</a>
+            </div>
+            <a th:href="@{/avances/crear}" class="btn btn-create">Crear Avance</a>
+        </div>
+
+        <!-- Contador de resultados -->
+        <div class="results-count">
+            Nº Resultados: <span th:text="${cantidadAvances}">0</span>
+        </div>
+
+        <!-- Lista de tarjetas de avances -->
+        <div class="advances-list">
+            <article class="advance-item"
+                     th:each="avance : ${listadoAvances}"
+                     th:id="|avance-${avance.id}|"
+                     th:onclick="|irAlAvance('${avance.id}')|">
+
+                <div class="advance-info">
+                    <h3 class="advance-title" th:text="${avance.titulo}">Título Avance</h3>
+                    <p class="advance-desc" th:text="${avance.descripcion}">Descripción del avance...</p>
+                    <span class="advance-date" th:text="${#temporals != null ? #temporals.format(avance.fechaCreacion, 'dd/MM/yyyy') : avance.fechaCreacion}">01/01/2026</span>
+                </div>
+
+                <!-- Botones circulares ED y EL -->
+                <div class="advance-actions">
+                    <button type="button"
+                            class="action-circle-btn"
+                            title="Editar avance"
+                            th:onclick="|editarAvance(event, '${avance.id}')|">
+                        <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button type="button"
+                            class="action-circle-btn"
+                            title="Eliminar avance"
+                            th:onclick="|eliminarAvance(event, '${avance.id}')|">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
+                </div>
+            </article>
+        </div>
+
+    </div>
+</main>
+
+<!-- Pie de página unificado -->
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+
+<script>
+    // Redirige al hacer clic en el cuerpo de la tarjeta
+    function irAlAvance(id) {
+        window.location.href = '/avances/' + id;
+    }
+
+    // Editar deteniendo la propagación al contenedor
+    function editarAvance(event, id) {
+        event.stopPropagation();
+        window.location.href = '/avances/' + id + '/editar';
+    }
+
+    // Eliminar avance mediante petición DELETE
+    function eliminarAvance(event, id) {
+        event.stopPropagation();
+
+        if (!confirm("¿Estás seguro de que deseas eliminar este avance?")) {
+            return;
+        }
+
+        fetch(`/avances/${id}`, {
+            method: 'DELETE'
+        }).then(response => {
+            if (response.ok) {
+                alert("Avance eliminado correctamente.");
+                const elemento = document.getElementById(`avance-${id}`);
+                if (elemento) {
+                    elemento.remove();
+                }
+            } else {
+                alert("Error al eliminar el avance.");
+            }
+        }).catch(error => {
+            console.error("Error al eliminar el avance:", error);
+            alert("Error al eliminar el avance.");
+        });
+    }
+</script>
+
+</body>
+</html>

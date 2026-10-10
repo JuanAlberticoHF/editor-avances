@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Avance - Editor Avances</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="../static/css/styles.css">
+</head>
+<body>
+
+<!-- Encabezado superior unificado -->
+<header th:replace="~{fragmentos/layout :: header}"></header>
+
+<main>
+    <div class="content-card form-card">
+
+        <!-- Título y Subtítulo según Wireframe -->
+        <div class="form-header-title">
+            <h2 class="page-title">FORMULARIO AVANCES</h2>
+            <p class="form-subtitle">Modo: Edición</p>
+        </div>
+
+        <!-- Formulario con HTTP Method Overriding a PUT -->
+        <form th:action="@{/avances/{id}(id=${avance.id})}"
+              th:object="${avance}"
+              th:method="put"
+              class="form-body">
+
+            <!-- Campo de solo lectura: Identificador -->
+            <div class="form-group">
+                <div class="form-readonly-field" th:text="${'Identificador: ' + avance.id}">Identificador: X</div>
+                <input type="hidden" th:field="*{id}" />
+            </div>
+
+            <!-- Campo: Título -->
+            <div class="form-group">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" id="titulo" th:field="*{titulo}" class="form-control-input" required />
+            </div>
+
+            <!-- Campo: Descripción -->
+            <div class="form-group">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea id="descripcion" th:field="*{descripcion}" class="form-control-input desc-textarea" rows="5" required></textarea>
+            </div>
+
+            <!-- Campos de solo lectura: Fechas -->
+            <div class="form-group">
+                <div class="form-readonly-field" th:text="${'Fecha creación: ' + avance.fechaCreacion}">Fecha creación: XX/XX/XXXX</div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-readonly-field" th:text="${'Fecha última modificación: ' + avance.fechaActualizacion}">Fecha última modificación: XX/XX/XXXX</div>
+            </div>
+
+            <!-- Botones: Cancelar y Guardar -->
+            <div class="form-actions-bar">
+                <a th:href="@{/avances/}" class="btn btn-form-action">Cancelar</a>
+                <button type="submit" class="btn btn-form-action">Guardar</button>
+            </div>
+
+        </form>
+
+    </div>
+</main>
+
+<!-- Pie de página unificado -->
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+
+</body>
+</html>
