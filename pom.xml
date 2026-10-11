@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.github.juanalberticohf</groupId>
 	<artifactId>editor-avances</artifactId>
-	<version>1.0.0-RELEASE</version>
+	<version>1.0.2-RELEASE</version>
 	<name>Editor Avances</name>
 	<description>Editor de Avances Thymeleaf</description>
 	<url>https://github.com/JuanAlberticoHF/editor-avances</url>
