@@ -42,12 +42,24 @@ Para descargar y ejecutar el proyecto, sigue estos pasos:
    ```
 - Esto descargará el proyecto en tu máquina local de la rama `main`, que es la rama de desarrollo actual.
 
-### 2. Levantar base de datos con Docker Compose
+### 2. Iniciar la aplicación
    ```bash
    docker-compose up -d
    ```
-- La base de datos MySQL en Docker estará disponible en `localhost:3307` con el nombre `funkomania_db`.
-- Para apagar el contenedor de la base de datos utilizar el comando: `editor-avances-db`.
+- La base de datos MySQL en Docker estará disponible en `localhost:3307` con el nombre `editor-avances-db`.
+- Para apagar el contenedor de la base de datos utilizar el comando: `docker-compose down`.
 
 ### 3. Acceder a la aplicación
 - Abre tu navegador web y navega a `http://localhost:8080` para acceder a la aplicación Editor de Avances.
+
+## Galeria Imagenes
+- Inicio aplicación:
+![inicio-app.png](assets/inicio-app.png)
+- Listado de Avances:
+![listado-app.png](assets/listado-app.png)
+- Detalle de un Avance:
+![visualizar-avance-app.png](assets/visualizar-avance-app.png)
+- Formulario de creación de Avance:
+![crear-avance-app.png](assets/crear-avance-app.png)
+- Formulario de edición de un Avance:
+![edit-avance-app.png](assets/editar-avance-app.png)
