@@ -28,7 +28,6 @@ El objetivo del proyecto de practica es iniciar en la practica de Thymeleaf con 
 - Repositorio remoto: **GitHub**
 
 ## Requerimientos Previos
-- Instalar [JDK 21](https://www.oracle.com/java/technologies/javase/jdk21-archive-downloads.html) para compilar y ejecutar la aplicación.
 - Instalar [Git](https://git-scm.com/install/windows) para clonar el repositorio.
 - Instalar [Docker](https://docs.docker.com/get-started/get-docker/) para el despliegue del contenedor de MySQL.
 
